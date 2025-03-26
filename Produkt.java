@@ -51,5 +51,21 @@ public class Produkt {
                 "cena:" + cena +
                 "ilość w magazynie: "+ iloscWMagazynie);
     }
+    public Produkt(int id, String nazwa, String kategoria, double cena, int iloscWMagazynie) {
+        this.id = id;
+        this.nazwa = nazwa;
+        this.kategoria = kategoria;
+        this.cena = cena;
+        this.iloscWMagazynie = iloscWMagazynie;
+    }
+
+    public static void main(String[] args) {
+
+        Produkt produkt = new Produkt(1, "Laptop XYZ", "Laptop", 3499.99, 20);
+
+        produkt.wyswietlInformacje();
+    }
+
+
 
 }

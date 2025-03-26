@@ -6,6 +6,15 @@ public class Zamuwienie {
     private String dataZamuwienia;
     private String status;
 
+    public Zamowienie(int id, Klient klient, Produkt[] produkty, int[] ilosci, String dataZamowienia, String status) {
+        this.id = id;
+        this.klient = klient;
+        this.produkty = produkty;
+        this.ilosc = ilosci;
+        this.dataZamuwienia = dataZamowienia;
+        this.status = status;
+    }
+
     public int getId() {
         return id;
     }
@@ -55,11 +64,37 @@ public class Zamuwienie {
     }
     public double obliczWartoscZamuwienia(){
         for (int i = 0; i < produkty.length; i++) {
-            double produkty =
+            double wartość = 0 ;
+            wartosc += produkty[i].getCena() * ilosc[i];
         }
 
-        return 0.0;
+        return wartosc;
+    }
+    public void zastosujZnizke() {
+        if (klient.isCzyStaly()) {
+            double wartosc = obliczWartoscZamuwienia();
+            double zniżka = wartosc * 0.10;
+            System.out.println("Zniżka dla stałego klienta: " + zniżka + " PLN");
+            System.out.println("Nowa wartość zamówienia: " + (wartosc - zniżka) + " PLN");
+        } else {
+            System.out.println("Brak zniżki dla tego klienta.");
+        }
+    }
+    public void wyswietlSzczegoly() {
+        System.out.println("Zamówienie ID: " + id);
+        System.out.println("Klient: " + klient.getImie() + " " + klient.getNazwisko());
+        System.out.println("Data zamówienia: " + dataZamowienia);
+        System.out.println("Status zamówienia: " + status);
+
+        System.out.println("Produkty w zamówieniu:");
+        for (int i = 0; i < produkty.length; i++) {
+            System.out.println("- " + produkty[i].getNazwa() + " x" + ilosci[i] + " | Cena: " + produkty[i].getCena() + " PLN");
+        }
+        System.out.println("Łączna wartość zamówienia: " + obliczWartoscZamowienia() + " PLN");
     }
 
 
-}
+
+
+
+    }

@@ -52,4 +52,20 @@ public class Klient {
                 "czy to stały klient:" + czyStaly);
     }
 
+    public Klient(int id, String imie, String nazwisko, String email, boolean czyStaly) {
+        this.id = id;
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.email = email;
+        this.czyStaly = czyStaly;
+    }
+    public static void main(String[] args) {
+
+        Klient klient = new Klient(1, "Jan", "Kowalski", "jan.kowalski@example.com", true);
+
+
+        klient.wyswietlInformacje();
+    }
+
+
 }
